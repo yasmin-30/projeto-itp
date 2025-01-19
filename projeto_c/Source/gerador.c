@@ -4,6 +4,7 @@
 #include <math.h>
 #include <unistd.h> //biblioteca do getopt
 #include <ctype.h> //biblioteca do atoi
+#include "../Headers/funcoes_comuns.h"
 #include "../Headers/funcoes_gerador.h"
 
 //PASTA PARA OUTPUTS
