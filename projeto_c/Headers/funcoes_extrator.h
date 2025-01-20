@@ -8,6 +8,8 @@ typedef struct {
     int **matriz;
 } ImagemPBM;
 
+int codigo[8];
+
 extern const char *L_CODE[10];
 extern const char *R_CODE[10];
 
