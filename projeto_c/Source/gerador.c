@@ -77,7 +77,7 @@ int main(int argc, char **argv){
     strcpy(nome, n);
     strcat(nome, ".pbm");
     
-    resultado = verificacao(b);
+    resultado = verificacao(b, codigo);
     if(resultado == 1){
         return 1;
     }
