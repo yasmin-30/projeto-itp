@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "funcoes_extrator.h"
+#include "../Headers/funcoes_extrator.h"
+#include "../Headers/funcoes_comuns.h"
 #define cabecalho_pbm "P1"
 
 int main(int argc, char *argv[]) {
