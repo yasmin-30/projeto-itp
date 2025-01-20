@@ -6,7 +6,7 @@ O projeto é dividido em duas partes, uma que recebe um padrão EAN-8 e gera um 
 ## ⚙️ Executando os testes
 
 ### Gerador de código de barras
-Para executar o programa de geração de código de barras, após inicializar os arquivos necessários para execução, você deve seguir os seguintes passos logo após o nome do seu programa:\
+Para executar o programa de geração de código de barras, após inicializar os arquivos necessários para execução, você deve seguir os seguintes passos logo após o nome do seu programa:
 
 Para escrever o padrão EAN-8, digite -b antes do argumento, por exemplo: -b 40170725\
 Para definir os pixels por área, digite -a antes do argumento, por exemplo: -a 4\
@@ -29,7 +29,7 @@ Caso outro argumento seja passado na linha de comando, o programa informará que
 Agora, dando exemplos de como isso ficaria no terminal:
 programa.exe arquivo.pbm (CERTO)\
 programa.exe abcde arquivo.pbm (ERRADO)\
-programa.exe arquivo.pbm abcde (ERRADO)\
+programa.exe arquivo.pbm abcde (ERRADO)
 
 ## ✒️ Autores
 Autores do projeto e README:
