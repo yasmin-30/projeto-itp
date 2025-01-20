@@ -131,7 +131,7 @@ int encontrar_codigo_barras(ImagemPBM *imagem) {
 }
 
 int decodificar_digito(const char *sequencia, int is_left) {
-    const char **tabela = is_left ? left_code : right_code;
+    const char **tabela = is_left ? (const char **)left_code : (const char **)right_code;
     for (int i = 0; i < 10; i++) {
         if (strcmp(sequencia, tabela[i]) == 0) {
             return i;
