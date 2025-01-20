@@ -7,12 +7,9 @@
 #include "../Headers/funcoes_comuns.h"
 #include "../Headers/funcoes_gerador.h"
 
-//PASTA PARA OUTPUTS
-//AUMENTAR TAMANHO DAS ENTRADAS PADRÃO
-
 int main(int argc, char **argv){
+    
     //definição das entradas padrão
-
     char *b; //código de barras
     char *e = "5"; //espacamento
     char *a = "4"; //pixels por area
