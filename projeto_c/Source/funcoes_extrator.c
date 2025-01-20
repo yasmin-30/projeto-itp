@@ -6,6 +6,8 @@
 #include "../Headers/funcoes_comuns.h"
 #define cabecalho_pbm "P1"
 
+char* left_code[] = {"0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"};
+char* right_code[] = {"1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"};
 
 ImagemPBM *carregar_imagem(const char *nome_arquivo) {
     FILE *arquivo = fopen(nome_arquivo, "r");
@@ -130,7 +132,7 @@ int encontrar_codigo_barras(ImagemPBM *imagem) {
 }
 
 int decodificar_digito(const char *sequencia, int is_left) {
-    const char **tabela = is_left ? L_CODE : R_CODE;
+    const char **tabela = is_left ? left_code : right_code;
     for (int i = 0; i < 10; i++) {
         if (strcmp(sequencia, tabela[i]) == 0) {
             return i;
@@ -151,14 +153,14 @@ char *extrair_identificador(ImagemPBM *imagem) {
     for (int j = 0; j <= imagem->largura - 67 * largura_modulo; j++) {
         if (verificar_sequencia(imagem->matriz[meio], j, "101", largura_modulo)) {
             for (int k = 0; k < 4; k++) {
-                char lcode[8] = {0};
+                char left_code[8] = {0};
                 for (int m = 0; m < 7; m++) {
                     lcode[m] = imagem->matriz[meio][j + 3 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
                 }
                 identificador[indice++] = '0' + decodificar_digito(lcode, 1);
             }
             for (int k = 0; k < 4; k++) {
-                char rcode[8] = {0};
+                char right_code[8] = {0};
                 for (int m = 0; m < 7; m++) {
                     rcode[m] = imagem->matriz[meio][j + 3 * largura_modulo + 28 * largura_modulo + 5 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
                 }
