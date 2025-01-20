@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     // extrair o identificador
     char ident[8];
     extrair_identificador(imagem, ident);
-    if (verificacao(ident, codigo) {
+    if (verificacao(ident, codigo)) {
         printf("%s\n", ident);
     } else {
         fprintf(stderr, "Erro ao extrair o identificador do código de barras.\n");
