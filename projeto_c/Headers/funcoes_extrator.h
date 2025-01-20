@@ -23,7 +23,7 @@ void liberar_imagem(ImagemPBM *imagem);
 
 int verificar_sequencia(int *linha, int inicio, const char *sequencia, int largura_modulo);
 
-int encontrar_codigo_barras(ImagemPBM *imagem);
+int encontrar_codigo_barras(const ImagemPBM *imagem);
 
 int decodificar_digito(const char *sequencia, int is_left);
 
