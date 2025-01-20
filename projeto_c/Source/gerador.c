@@ -2,22 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <unistd.h> //biblioteca do getopt
-#include <ctype.h> //biblioteca do atoi
+#include <unistd.h>
+#include <ctype.h>
 #include "../Headers/funcoes_comuns.h"
 #include "../Headers/funcoes_gerador.h"
 
 int main(int argc, char **argv){
     
-    //definição das entradas padrão
-    char *b; //código de barras
-    char *e = "5"; //espacamento
-    char *a = "4"; //pixels por area
-    char *h = "100"; //altura
-    char *n = "codigo_barras"; //nome
-    int opt;
-    opterr = 0; //desabilita mensagem de erro
-
     //caso nenhum dos argumentos necessários tenha sido passado
     if(argc < 2){
         printf("As entradas não foram recebidas!\n");
@@ -26,13 +17,24 @@ int main(int argc, char **argv){
         printf("O código de barras não foi escrito!.\n");
         return 1;
     }
+
+    //definição das entradas padrão
+    char *b; //código de barras
+    char *e = "5"; //espacamento
+    char *a = "4"; //pixels por area
+    char *h = "100"; //altura
+    char *n = "codigo_barras"; //nome
+    int opt;
+    opterr = 0; //desabilita mensagem de erro
     
+    //outras variáveis
     char identificador[10], nome[50];
     char *conversao;
     int espacamento, area, altura, tamanho_linha;
     int resultado;
     int **imagem;
     int dimensao_x, dimensao_y;
+
 
     while ((opt = getopt (argc, argv, "b:e:a:h:n:")) != -1){ //getopt analisa argumentos de linha de comando
 
@@ -69,20 +71,21 @@ int main(int argc, char **argv){
         printf("Os argumentos recebidos apresentam um erro.\n");
         return 1;
     }
-    
 
-    espacamento = atoi(e); //atoi converte string para inteiros
-    area = atoi(a);
-    altura = atoi(h);
+    //conversao e verificação das entradas
+    espacamento = converter_string(e);
+    area = converter_string(a);
+    altura = converter_string(h);
+
     strcpy(nome, n);
     strcat(nome, ".pbm");
-    
+
     resultado = verificacao(b, codigo);
     if(resultado == 1){
         return 1;
     }
-    
-    conversao = conversor();
+
+    conversao = conversor_codigo();
 
     //alocação da matriz imagem
     tamanho_linha = strlen(conversao);
@@ -101,13 +104,12 @@ int main(int argc, char **argv){
         }
     }
 
-    imagem = preencher_codigo(conversao, imagem, espacamento, area, altura);
-    
-    free(conversao);
-
     dimensao_x = (tamanho_linha*area)+2*espacamento; //largura final
     dimensao_y = altura+2*espacamento; //altura final
 
+    //últimas funcoes para a criação do arquivo.pbm
+    imagem = preencher_codigo(conversao, imagem, espacamento, area, altura);
+    free(conversao);
     gerar(imagem, dimensao_x, dimensao_y, nome);
 
     //liberação de memória alocada
