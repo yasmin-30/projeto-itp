@@ -25,6 +25,6 @@ int encontrar_codigo_barras(ImagemPBM *imagem);
 
 int decodificar_digito(const char *sequencia, int is_left);
 
-char *extrair_identificador(ImagemPBM *imagem);
+int extrair_identificador(ImagemPBM *imagem, char ident[]);
 
 #endif // FUNCOES_H
