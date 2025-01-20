@@ -1,7 +1,7 @@
 # PROJETO FINAL DE ITP
 
-O projeto é dividido em duas partes:\
-  - uma que recebe um padrão EAN-8 e informações opcionais de pixels por área, expaçamento, altura e nome do arquivo, e gera um código de barras;\
+O projeto é dividido em duas partes:
+  - uma que recebe um padrão EAN-8 e informações opcionais de pixels por área, expaçamento, altura e nome do arquivo, e gera um código de barras;
   - uma que recebe um arquivo pbm, que contem um código de barras, e devolve o padrão EAN-8 correspondente a este código.
 
 ## ⚙️ Executando os testes
