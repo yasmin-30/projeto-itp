@@ -1,7 +1,8 @@
 # PROJETO FINAL DE ITP
 
-O projeto é dividido em duas partes, uma que recebe um padrão EAN-8 e gera um código de barras, e outra que recebe um arquivo pbm que contem um código de barras e devolve o padrão EAN-8.
-
+O projeto é dividido em duas partes:\
+  -uma que recebe um padrão EAN-8 e gera um código de barras;\
+  -uma que recebe um arquivo pbm que contem um código de barras e devolve o padrão EAN-8.\
 
 ## ⚙️ Executando os testes
 
@@ -26,7 +27,7 @@ Para executar o programa de extração de código de barras, após inicializar o
 Adicione o nome do arquivo PBM; \
 Caso outro argumento seja passado na linha de comando, o programa informará que o executável só utiliza o arquivo PBM e não apresentará funcionamento.
 
-Agora, dando exemplos de como isso ficaria no terminal:
+Agora, dando exemplos de como isso ficaria no terminal:\
 programa.exe arquivo.pbm (CERTO)\
 programa.exe abcde arquivo.pbm (ERRADO)\
 programa.exe arquivo.pbm abcde (ERRADO)
