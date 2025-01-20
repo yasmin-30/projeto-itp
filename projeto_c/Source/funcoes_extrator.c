@@ -141,11 +141,10 @@ int decodificar_digito(const char *sequencia, int is_left) {
     return -1;
 }
 
-char *extrair_identificador(ImagemPBM *imagem) {
+int extrair_identificador(ImagemPBM *imagem, char ident[]) {
     int largura_modulo = encontrar_codigo_barras(imagem);
-    if (largura_modulo == 0) return NULL;
+    if (largura_modulo == 0) return 0;
 
-    char *identificador = malloc(9 * sizeof(char));
     int indice = 0;
 
     int meio = imagem->altura / 2;
@@ -155,21 +154,20 @@ char *extrair_identificador(ImagemPBM *imagem) {
             for (int k = 0; k < 4; k++) {
                 char left_code[8] = {0};
                 for (int m = 0; m < 7; m++) {
-                    lcode[m] = imagem->matriz[meio][j + 3 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
+                    left_code[m] = imagem->matriz[meio][j + 3 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
                 }
-                identificador[indice++] = '0' + decodificar_digito(lcode, 1);
+                ident[indice++] = '0' + decodificar_digito(left_code, 1);
             }
             for (int k = 0; k < 4; k++) {
                 char right_code[8] = {0};
                 for (int m = 0; m < 7; m++) {
-                    rcode[m] = imagem->matriz[meio][j + 3 * largura_modulo + 28 * largura_modulo + 5 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
+                    right_code[m] = imagem->matriz[meio][j + 3 * largura_modulo + 28 * largura_modulo + 5 * largura_modulo + k * 7 * largura_modulo + m * largura_modulo] + '0';
                 }
-                identificador[indice++] = '0' + decodificar_digito(rcode, 0);
+                ident[indice++] = '0' + decodificar_digito(right_code, 0);
             }
-            identificador[8] = '\0';
-            return identificador;
+            ident[8] = '\0';
+            return 1;
         }
     }
-    free(identificador);
-    return NULL;
+    return 0;
 }
