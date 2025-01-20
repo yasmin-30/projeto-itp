@@ -7,7 +7,31 @@
 
 int codigo[8]; //variável global por ser usada em muitas funções
 
-char* conversor(){  
+
+int converter_string(char numero[]){
+    char aceitos[10] = "0123456789";
+    int tamanho_do_numero = strlen(numero);
+    int contador = 0;
+    int numero_inteiro = 0;
+
+    for(int i = 0; i < tamanho_do_numero; i++){
+        for(int j = 0; j < 10; j++){
+            if(numero[i] == aceitos[j]){
+                numero_inteiro += 10*numero_inteiro + j; //converte para inteiro
+                contador++; //verifica a quantidade de inteiros convertidos
+            }
+        }
+    }
+
+    if(contador != tamanho_do_numero){
+        printf("Entrada inválida, o programa deve receber números maiores ou iguais a zero.\n");
+        exit(1);
+    }
+
+    return numero_inteiro;
+}
+
+char* conversor_codigo(){  
     char *conversao;
     conversao = calloc(67, sizeof(char));
     strcpy(conversao, "101"); //marca inicial  
