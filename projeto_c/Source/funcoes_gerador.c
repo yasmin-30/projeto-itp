@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include "../Headers/funcoes_comuns.h"
 #include "../Headers/funcoes_gerador.h"
 
 int codigo[8]; //variável global por ser usada em muitas funções
-
-char* left_code[] = {"0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"};
-char* right_code[] = {"1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"};
 
 char* conversor(){  
     char *conversao;
